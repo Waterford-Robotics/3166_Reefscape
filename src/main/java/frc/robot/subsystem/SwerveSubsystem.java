@@ -49,10 +49,8 @@ public class SwerveSubsystem extends SubsystemBase {
     }
 
     @Override
-
     public void periodic() {}
 
     @Override
-
     public void simulationPeriodic() {}
 }
