@@ -31,8 +31,6 @@ public class SwerveSubsystem extends SubsystemBase {
         }
         
         swerveDrive.setCosineCompensator(false);
-
-        
     }
         
     public Command driveCommand(DoubleSupplier translationX, DoubleSupplier translationY, DoubleSupplier angularRotationX)
