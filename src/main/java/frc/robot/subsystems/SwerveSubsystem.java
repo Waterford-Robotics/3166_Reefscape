@@ -1,4 +1,4 @@
-package frc.robot.subsystem;
+package frc.robot.subsystems;
 
 import java.io.File;
 import java.util.function.DoubleSupplier;
