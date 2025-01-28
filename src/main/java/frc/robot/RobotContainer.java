@@ -3,6 +3,8 @@ package frc.robot;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -21,6 +23,7 @@ public class RobotContainer {
 
     private void configureBindings() {
         //Where you decide what each button does
+        //new JoystickButton (m_driverController.getHID(), ControllerConstants.troughForward).whileTrue(new SetShoulderCommand(m_shoulderSubsystem, "home"));
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
