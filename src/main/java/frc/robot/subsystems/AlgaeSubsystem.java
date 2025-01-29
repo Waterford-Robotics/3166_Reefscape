@@ -12,8 +12,8 @@ public class AlgaeSubsystem extends SubsystemBase {
 
     public AlgaeSubsystem() {
         
-        ShoulderMotor = new Talon(0);
-        RollerMotor = new Talon(1);
+        ShoulderMotor = new Talon(3);
+        RollerMotor = new Talon(4);
     }
     public Command armRotationCommand(double shoulderspeed){
         return run(() -> {
