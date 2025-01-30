@@ -5,7 +5,7 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
     
     public static final class SwerveConstants {
-        public static final double k_maxSpeed = Units.feetToMeters(18.9);
+        public static final double k_maxSpeed = Units.feetToMeters(18.9); 
     }
 
     public static final class OperatorConstants {
@@ -18,10 +18,12 @@ public final class Constants {
         public static final double k_turnRate = -1;
     }
 
-    public static final class ControllerConstants
-    {
-
+    public static final class ControllerConstants {
         public static final int troughForward = 6; //right bump
         public static final int troughBackward = 5; //left bump
+    }
 
+    public static final class TroughSpinConstants {
+        public static final double k_troughSpin = 0.8;
+    }
 }
