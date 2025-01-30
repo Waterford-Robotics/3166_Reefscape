@@ -26,8 +26,7 @@ public class RobotContainer {
 
     private void configureBindings() {
         //Where you decide what each button does
-        //new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmRotation).whileTrue(new SetShoulderCommand(m_algaeSubsystem,""));
-        //public final BooleanEvent povUp​(final EventLoop loop)
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmRotation).whileTrue(m_algaeSubsystem.armRotationCommand(1.0));
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
