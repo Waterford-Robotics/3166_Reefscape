@@ -17,6 +17,8 @@ public final class Constants {
         public static final int k_algaePickupArmButton = Button.kA.value;
         public static final int k_algaePickupRollerPOV = 90; //this dpad POV 90degree
         public static final int k_algaeReleaseRollerPOV = 270; //this is dpad POV 270degree
+        public static final int k_elevatorRaiseButton = Button.kRightBumper.value;
+        public static final int k_elevatorLowerButton = Button.kLeftBumper.value;
     }
 
     public static final class DriveConstants {
@@ -32,5 +34,9 @@ public final class Constants {
 
     public static final class TroughSpinConstants {
         public static final double k_troughSpin = 0.8;
+    }
+
+    public static final class ElevatorSpinConstants {
+        public static final double k_elevatorSpeed = 0.8;
     }
 }
