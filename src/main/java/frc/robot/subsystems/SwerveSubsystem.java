@@ -29,7 +29,7 @@ public class SwerveSubsystem extends SubsystemBase {
         catch (Exception e) {
             throw new RuntimeException(e);
         }
-        
+        swerveDrive.pushOffsetsToEncoders();
         swerveDrive.setCosineCompensator(false);
     }
         
