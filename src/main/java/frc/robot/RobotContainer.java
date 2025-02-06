@@ -2,12 +2,13 @@ package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.Constants.ElevatorSpinConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.AlgaeSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -32,16 +33,33 @@ public class RobotContainer {
 
     private void configureBindings() {
         //Where you decide what each button does
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton).whileTrue(m_algaeSubsystem.armRotationCommand(-OperatorConstants.k_AlgaeArmRotationSpeed));
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton).whileTrue(m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
-        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
-        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton)
+            .whileTrue(m_algaeSubsystem.armRotationCommand(-OperatorConstants.k_AlgaeArmRotationSpeed));
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton)
+            .whileTrue(m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
+
+        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV)
+            .whileTrue(m_algaeSubsystem.rollCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
+        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV)
+            .whileTrue(m_algaeSubsystem.rollCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
 
         new JoystickButton(m_driverController.getHID(), ControllerConstants.troughForward)
             .whileTrue(m_troughSubsystem.startEnd(m_troughSubsystem::spinCommand, m_troughSubsystem::stop));
+            // FINISH TIS 
 
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_elevatorRaiseButton).whileTrue(m_elevatorSubsystem.elevatorRaiseCommand(ElevatorSpinConstants.k_elevatorSpeed));
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_elevatorLowerButton).whileTrue(m_elevatorSubsystem.elevatorLowerCommand(ElevatorSpinConstants.k_elevatorSpeed));
+        new Trigger(() -> m_driverController.getRawAxis(OperatorConstants.k_righttrig) > 0.05)
+            .whileTrue(
+        new InstantCommand(() -> m_elevatorSubsystem.elevatorRaiseCommand(), m_elevatorSubsystem))
+            .whileFalse(
+        new InstantCommand(() -> m_elevatorSubsystem.stop(), m_elevatorSubsystem)
+        );    
+
+        new Trigger(() -> m_driverController.getRawAxis(OperatorConstants.k_lefttrig) > 0.05)
+            .whileTrue(
+        new InstantCommand(() -> m_elevatorSubsystem.elevatorLowerCommand(), m_elevatorSubsystem))
+            .whileFalse(
+        new InstantCommand(() -> m_elevatorSubsystem.stop(), m_elevatorSubsystem)
+        );    
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
