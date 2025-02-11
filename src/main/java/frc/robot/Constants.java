@@ -30,6 +30,6 @@ public final class Constants {
     }
 
     public static final class TroughSpinConstants {
-        public static final double k_troughSpin = 0.8;
+        public static final double k_troughSpin = -0.8;
     }
 }
