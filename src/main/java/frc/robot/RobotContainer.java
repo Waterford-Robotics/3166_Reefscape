@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -34,8 +35,14 @@ public class RobotContainer {
         new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
         new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
 
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.troughForward)
-            .whileTrue(m_troughSubsystem.startEnd(m_troughSubsystem::spinCommand, m_troughSubsystem::stop));
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.troughYforward)
+        .whileTrue(new RunCommand(
+            () -> m_troughSubsystem.spinCommand(),
+            m_troughSubsystem))
+
+        .whileFalse(new RunCommand(
+            () -> m_troughSubsystem.stop(),
+            m_troughSubsystem));
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(

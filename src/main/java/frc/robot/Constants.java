@@ -26,8 +26,7 @@ public final class Constants {
     }
 
     public static final class ControllerConstants {
-        public static final int troughForward = 6; //right bump
-        public static final int troughBackward = 5; //left bump
+        public static final int troughYforward = 4;
     }
 
     public static final class TroughSpinConstants {
