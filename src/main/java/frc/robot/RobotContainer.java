@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -35,11 +36,38 @@ public class RobotContainer {
 
 
         //Algae//
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton)
-        .whileTrue(m_algaeSubsystem.startEnd(m_algaeSubsystem::armPickupCommand, m_algaeSubsystem::stopArm));
 
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton)
-            .whileTrue(m_algaeSubsystem.startEnd(m_algaeSubsystem::armReleaseCommand, m_algaeSubsystem::stopArm));
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton) //Arm Pickup
+         .whileTrue(new RunCommand(
+            () -> m_algaeSubsystem.armPickupCommand(),
+            m_algaeSubsystem))
+        .whileFalse(new RunCommand(
+            () -> m_algaeSubsystem.stopArm(),
+            m_algaeSubsystem));
+
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton) //Arm Release
+        .whileTrue(new RunCommand(
+            () -> m_algaeSubsystem.armReleaseCommand(),
+            m_algaeSubsystem))
+        .whileFalse(new RunCommand(
+            () -> m_algaeSubsystem.stopArm(),
+            m_algaeSubsystem));
+
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton) //Roller Pickup
+        .whileTrue(new RunCommand(
+            () -> m_algaeSubsystem.rollPickupCommand(),
+            m_algaeSubsystem))
+        .whileFalse(new RunCommand(
+            () -> m_algaeSubsystem.stopRoller(),
+            m_algaeSubsystem));
+   
+        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton) //Roller Release
+        .whileTrue(new RunCommand(
+            () -> m_algaeSubsystem.rollReleaseCommand(),
+            m_algaeSubsystem))
+        .whileFalse(new RunCommand(
+            () -> m_algaeSubsystem.stopRoller(),
+            m_algaeSubsystem));
 
         new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV)
         .whileTrue(m_algaeSubsystem.startEnd(m_algaeSubsystem::rollPickupCommand, m_algaeSubsystem::stopRoller));
@@ -50,9 +78,13 @@ public class RobotContainer {
 
         //Trough//
         new JoystickButton(m_driverController.getHID(), ControllerConstants.troughForward)
-            .whileTrue(m_troughSubsystem.startEnd(m_troughSubsystem::spinCommand, m_troughSubsystem::stop));
-            // FINISH THIS 
+            .whileTrue(new RunCommand(
+                () -> m_troughSubsystem.spinCommand(),
+                m_troughSubsystem))
 
+            .whileFalse(new RunCommand(
+                    () -> m_troughSubsystem.stop(),
+                    m_troughSubsystem));
 
         //Elevator//
         new Trigger(() -> m_driverController.getRawAxis(OperatorConstants.k_righttrig) > 0.05)

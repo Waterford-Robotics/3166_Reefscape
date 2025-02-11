@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.OperatorConstants;
+import static frc.robot.Constants.OperatorConstants.k_AlgaeArmRotationSpeed;
 
 public class AlgaeSubsystem extends SubsystemBase {
 
@@ -18,22 +18,22 @@ public class AlgaeSubsystem extends SubsystemBase {
     }
     public Command armPickupCommand() {
         return run(() -> {
-            ShoulderMotor.set(OperatorConstants.k_AlgaeArmRotationSpeed);
+            ShoulderMotor.set(k_AlgaeArmRotationSpeed);
         });
     }
     public Command armReleaseCommand() {
         return run(() -> {
-            ShoulderMotor.set(-1*OperatorConstants.k_AlgaeArmRotationSpeed);
+            ShoulderMotor.set(-1*k_AlgaeArmRotationSpeed);
         });
     }
     public Command rollPickupCommand() {
         return run(() -> {
-            RollerMotor.set(OperatorConstants.k_algaeRollerSpeed);
+            RollerMotor.set(k_AlgaeArmRotationSpeed);
         });
     }
     public Command rollReleaseCommand() {
         return run(() -> {
-            RollerMotor.set(-1*OperatorConstants.k_algaeRollerSpeed);
+            RollerMotor.set(-1*k_AlgaeArmRotationSpeed);
         });
     }
 
