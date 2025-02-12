@@ -16,14 +16,14 @@ public class ElevatorSubsystem extends SubsystemBase {
     }
     public Command elevatorRaiseCommand() { 
         return run(() -> {
-            elevatorMotor1.set(k_elevatorSpeed);
-            elevatorMotor2.set(-k_elevatorSpeed);
+            elevatorMotor1.set(ElevatorSpinConstants.k_elevatorSpeed);
+            elevatorMotor2.set(-ElevatorSpinConstants.k_elevatorSpeed);
         });
     }
     public Command elevatorLowerCommand() {
         return run(() -> {
-            elevatorMotor1.set(-k_elevatorSpeed);
-            elevatorMotor2.set(k_elevatorSpeed);
+            elevatorMotor1.set(-ElevatorSpinConstants.k_elevatorSpeed);
+            elevatorMotor2.set(ElevatorSpinConstants.k_elevatorSpeed);
         });
     }
 
