@@ -31,6 +31,8 @@ public final class Constants {
     public static final class ControllerConstants {
         public static final int troughForward = 6; // Right Bumper
         public static final int troughBackward = 5; // Left Bumper
+        public static final int elevatorUp = 3;
+        public static final int elevatorDown = 2;
     }
 
     public static final class TroughSpinConstants {

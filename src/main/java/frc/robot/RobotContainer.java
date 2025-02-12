@@ -87,21 +87,25 @@ public class RobotContainer {
                     m_troughSubsystem));
 
         //Elevator//
-        new Trigger(() -> m_driverController.getRawAxis(OperatorConstants.k_righttrig) > 0.05)
-            .whileTrue(
-        new InstantCommand(() -> m_elevatorSubsystem.elevatorRaiseCommand(), m_elevatorSubsystem))
-            .whileFalse(
-        new InstantCommand(() -> m_elevatorSubsystem.stop(), m_elevatorSubsystem)
-        );    
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.elevatorUp)
+        .whileTrue(new RunCommand(
+            () -> m_elevatorSubsystem.elevatorRaiseCommand(),
+            m_elevatorSubsystem))
 
-        new Trigger(() -> m_driverController.getRawAxis(OperatorConstants.k_lefttrig) > 0.05)
-            .whileTrue(
-        new InstantCommand(() -> m_elevatorSubsystem.elevatorLowerCommand(), m_elevatorSubsystem))
-            .whileFalse(
-        new InstantCommand(() -> m_elevatorSubsystem.stop(), m_elevatorSubsystem)
-        );    
-    }
+        .whileFalse(new RunCommand(
+                () -> m_elevatorSubsystem.stop(),
+                m_elevatorSubsystem));
 
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.elevatorDown)
+        .whileTrue(new RunCommand(
+            () -> m_elevatorSubsystem.elevatorLowerCommand(),
+            m_elevatorSubsystem))
+        
+        .whileFalse(new RunCommand(
+            () -> m_elevatorSubsystem.stop(),
+            m_elevatorSubsystem) );
+                
+        
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
         () -> MathUtil.applyDeadband(m_driverController.getLeftY() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> MathUtil.applyDeadband(m_driverController.getLeftX() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
