@@ -27,8 +27,7 @@ public class RobotContainer {
     public RobotContainer() {
 
         configureBindings();
-
-       m_swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
+           m_swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
     }
 
     private void configureBindings() {
@@ -92,7 +91,7 @@ public class RobotContainer {
             () -> m_elevatorSubsystem.elevatorRaiseCommand(),
             m_elevatorSubsystem))
 
-        .whileFalse(new RunCommand(
+        .onFalse(new RunCommand(
                 () -> m_elevatorSubsystem.stop(),
                 m_elevatorSubsystem));
 
@@ -101,13 +100,13 @@ public class RobotContainer {
             () -> m_elevatorSubsystem.elevatorLowerCommand(),
             m_elevatorSubsystem))
         
-        .whileFalse(new RunCommand(
+        .onFalse(new RunCommand(
             () -> m_elevatorSubsystem.stop(),
             m_elevatorSubsystem) );
-                
         
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
         () -> MathUtil.applyDeadband(m_driverController.getLeftY() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> MathUtil.applyDeadband(m_driverController.getLeftX() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> m_driverController.getRightX() * DriveConstants.k_turnRate); 
+    }
 }

@@ -42,4 +42,10 @@ public final class Constants {
     public static final class ElevatorSpinConstants {
         public static final double k_elevatorSpeed = 0.8;
     }
+
+    public static final class ChannelConstants {
+        public static final int elevatorMotor1Channel = 0;
+        public static final int elevatorMotor2Channel = 1;
+
+    }
 }
