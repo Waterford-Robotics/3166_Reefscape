@@ -25,29 +25,63 @@ public class RobotContainer {
         configureBindings();
 
        m_swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
-       m_algaeSubsystem.setDefaultCommand(algaeArmRotation);
     }
 
     private void configureBindings() {
-        //Where you decide what each button does
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton).whileTrue(m_algaeSubsystem.armRotationCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton).whileTrue(m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
-        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
-        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
+      //Where you decide what each button does
 
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.troughYforward)
+
+       //Next 2 is Algae Arm
+
+       new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeArmDownButton) //Arm Pickup / Move down
         .whileTrue(new RunCommand(
-            () -> m_troughSubsystem.spinCommand(),
-            m_troughSubsystem))
+           () -> m_algaeSubsystem.armPickupCommand(),
+           m_algaeSubsystem))
+       .onFalse(new RunCommand(
+           () -> m_algaeSubsystem.stopArm(),
+           m_algaeSubsystem));
 
-        .whileFalse(new RunCommand(
-            () -> m_troughSubsystem.stop(),
-            m_troughSubsystem));
+
+       new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeArmUpButton) //Arm Release / Move up
+       .whileTrue(new RunCommand(
+           () -> m_algaeSubsystem.armReleaseCommand(),
+           m_algaeSubsystem))
+       .onFalse(new RunCommand(
+           () -> m_algaeSubsystem.stopArm(),
+           m_algaeSubsystem));
+
+
+       //Next 2 is Algae Roller
+       new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV) //Roller Pickup
+       .whileTrue(new RunCommand(
+           () -> m_algaeSubsystem.rollPickupCommand(),
+           m_algaeSubsystem))
+       .onFalse(new RunCommand(
+           () -> m_algaeSubsystem.stopRoller(),
+           m_algaeSubsystem));
+ 
+       new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV) //Roller Release
+       .whileTrue(new RunCommand(
+           () -> m_algaeSubsystem.rollReleaseCommand(),
+           m_algaeSubsystem))
+       .onFalse(new RunCommand(
+           () -> m_algaeSubsystem.stopRoller(),
+           m_algaeSubsystem));
+
+
+        //Trough//
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.troughForward)
+            .whileTrue(new RunCommand(
+                () -> m_troughSubsystem.spinCommand(),
+                m_troughSubsystem))
+
+            .whileFalse(new RunCommand(
+                    () -> m_troughSubsystem.stop(),
+                    m_troughSubsystem));
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
         () -> MathUtil.applyDeadband(m_driverController.getLeftY() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> MathUtil.applyDeadband(m_driverController.getLeftX() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> m_driverController.getRightX() * DriveConstants.k_turnRate); 
-    Command algaeArmRotation = m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed); 
 }
