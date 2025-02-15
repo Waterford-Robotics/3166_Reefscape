@@ -1,5 +1,7 @@
 package frc.robot;
 
+import com.pathplanner.lib.config.PIDConstants;
+
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.XboxController.Button;
 
@@ -32,4 +34,12 @@ public final class Constants {
     public static final class TroughSpinConstants {
         public static final double k_troughSpin = -0.8;
     }
+
+    public static final class AutoConstants {
+        public static final PIDConstants k_translationPID = new PIDConstants(0.7, 0, 0);
+        public static final PIDConstants k_anglePID = new PIDConstants(0.4, 0, 0.01);
+
+        public static final double spinUpAutoTime = 8; 
+        public static final double shootAutoTime = 3; 
+  }
 }

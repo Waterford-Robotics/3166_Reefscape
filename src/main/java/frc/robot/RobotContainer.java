@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -20,7 +21,20 @@ public class RobotContainer {
     private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.k_driverController);
     private final TroughSubsystem m_troughSubsystem = new TroughSubsystem();
 
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
+
     public RobotContainer() {
+
+        //Autos
+        m_chooser.addOption("Test Auto", m_swerveSubsystem.getAutonomousCommand("Test Auto"));
+
+        // New EventTrigger("run intake").whileTrue(Commands.print("running intake"));
+        // ^ ex. for path planner event triggers
+
+        // new PointTowardsZoneTrigger("Speaker").whileTrue(Commands.print("aiming at speaker"));
+        // ^ ex. for path planner point towards zone triggers 
+
+
 
         configureBindings();
 
@@ -50,4 +64,10 @@ public class RobotContainer {
         () -> MathUtil.applyDeadband(m_driverController.getLeftX() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> m_driverController.getRightX() * DriveConstants.k_turnRate); 
     Command algaeArmRotation = m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed); 
+
+    public Command getAutonomousCommand() {
+
+        // The selected auto on SmartDashboard will be run in autonomous
+        return m_chooser.getSelected(); 
+      }
 }
