@@ -20,7 +20,7 @@ public final class Constants {
     }
 
     public static final class DriveConstants {
-        public static final double k_driveDeadBand = 0.05;
+        public static final double k_driveDeadBand = 0.1;
         public static final double k_driveSpeed = -1;
         public static final double k_turnRate = -1;
     }
