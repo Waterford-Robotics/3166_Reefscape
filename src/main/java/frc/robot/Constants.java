@@ -2,7 +2,6 @@ package frc.robot;
 
 
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.XboxController.Axis;
 
 
@@ -17,12 +16,8 @@ public final class Constants {
        public static final int k_driverController = 0;
        public static final double k_AlgaeArmRotationSpeed = 0.2; //all speed variables will have to be adjusted later
        public static final double k_algaeRollerSpeed = 0.5;
-       public static final int k_algaeArmUpButton = Button.kY.value;
-       public static final int k_algaeArmDownButton = Button.kA.value;
-       public static final int k_algaePickupRollerPOV = 90; //this dpad POV 90degree
-       public static final int k_algaeReleaseRollerPOV = 270; //this is dpad POV 270degree
-       public final static int k_righttrig = Axis.kRightTrigger.value; // Right Trigger
-       public final static int k_lefttrig = Axis.kLeftTrigger.value; // Left Trigger
+       public static final int k_algaeArmUpButton = 4;
+       public static final int k_algaeArmDownButton = 1;
    }
 
 
@@ -36,6 +31,10 @@ public final class Constants {
    public static final class ControllerConstants {
        public static final int troughForward = 6; // Right Bumper
        public static final int troughBackward = 5; // Left Bumper
+       public static final int k_algaePickupRollerPOV = 90; //this dpad POV 90degree
+       public static final int k_algaeReleaseRollerPOV = 270; //this is dpad POV 270degree
+       public final static int k_righttrig = Axis.kRightTrigger.value; // Right Trigger
+       public final static int k_lefttrig = Axis.kLeftTrigger.value; // Left Trigger
    }
 
 

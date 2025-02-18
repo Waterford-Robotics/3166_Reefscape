@@ -36,37 +36,37 @@ public class RobotContainer {
        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeArmDownButton) //Arm Pickup / Move down
         .whileTrue(new RunCommand(
            () -> m_algaeSubsystem.armPickupCommand(),
-           m_algaeSubsystem))
-       .onFalse(new RunCommand(
-           () -> m_algaeSubsystem.stopArm(),
            m_algaeSubsystem));
+    //    .onFalse(new RunCommand(
+    //        () -> m_algaeSubsystem.stopArm(),
+    //        m_algaeSubsystem));
 
 
        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeArmUpButton) //Arm Release / Move up
        .whileTrue(new RunCommand(
            () -> m_algaeSubsystem.armReleaseCommand(),
-           m_algaeSubsystem))
-       .onFalse(new RunCommand(
-           () -> m_algaeSubsystem.stopArm(),
            m_algaeSubsystem));
+    //    .onFalse(new RunCommand(
+    //        () -> m_algaeSubsystem.stopArm(),
+    //        m_algaeSubsystem));
 
 
        //Next 2 is Algae Roller
-       new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV) //Roller Pickup
+       new POVButton(m_driverController.getHID(), ControllerConstants.k_algaePickupRollerPOV) //Roller Pickup
        .whileTrue(new RunCommand(
            () -> m_algaeSubsystem.rollPickupCommand(),
-           m_algaeSubsystem))
-       .onFalse(new RunCommand(
-           () -> m_algaeSubsystem.stopRoller(),
            m_algaeSubsystem));
+    //    .onFalse(new RunCommand(
+    //        () -> m_algaeSubsystem.stopRoller(),
+    //        m_algaeSubsystem));
  
-       new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV) //Roller Release
+       new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeReleaseRollerPOV) //Roller Release
        .whileTrue(new RunCommand(
            () -> m_algaeSubsystem.rollReleaseCommand(),
-           m_algaeSubsystem))
-       .onFalse(new RunCommand(
-           () -> m_algaeSubsystem.stopRoller(),
            m_algaeSubsystem));
+    //    .onFalse(new RunCommand(
+    //        () -> m_algaeSubsystem.stopRoller(),
+    //        m_algaeSubsystem));
 
 
         //Trough//
@@ -74,7 +74,6 @@ public class RobotContainer {
             .whileTrue(new RunCommand(
                 () -> m_troughSubsystem.spinCommand(),
                 m_troughSubsystem))
-
             .whileFalse(new RunCommand(
                     () -> m_troughSubsystem.stop(),
                     m_troughSubsystem));
