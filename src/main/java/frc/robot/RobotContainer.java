@@ -36,10 +36,10 @@ public class RobotContainer {
        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeArmDownButton) //Arm Pickup / Move down
         .whileTrue(new RunCommand(
            () -> m_algaeSubsystem.armPickupCommand(),
-           m_algaeSubsystem));
-    //    .onFalse(new RunCommand(
-    //        () -> m_algaeSubsystem.stopArm(),
-    //        m_algaeSubsystem));
+           m_algaeSubsystem))
+       .onFalse(new RunCommand(
+           () -> m_algaeSubsystem.stopArm(),
+            m_algaeSubsystem));
 
 
        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeArmUpButton) //Arm Release / Move up
@@ -63,10 +63,10 @@ public class RobotContainer {
        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeReleaseRollerPOV) //Roller Release
        .whileTrue(new RunCommand(
            () -> m_algaeSubsystem.rollReleaseCommand(),
-           m_algaeSubsystem));
-       // .onFalse(new RunCommand(
-           // () -> m_algaeSubsystem.stopRoller(),
-            //m_algaeSubsystem));
+           m_algaeSubsystem))
+       .onFalse(new RunCommand(
+             () -> m_algaeSubsystem.stopRoller(),
+            m_algaeSubsystem));
 
 
         //Trough//
