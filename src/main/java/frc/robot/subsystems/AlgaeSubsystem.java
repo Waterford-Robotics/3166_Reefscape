@@ -1,29 +1,34 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import static frc.robot.Constants.OperatorConstants.k_algaeRollerSpeed;
+import static frc.robot.Constants.OperatorConstants.k_algaeArmRotationSpeed;
 
 public class AlgaeSubsystem extends SubsystemBase {
 
 
-    private Talon ShoulderMotor;
-    private Talon RollerMotor;
+    private Talon shoulderMotor;
+    private Talon rollerMotor;
 
     public AlgaeSubsystem() {
+        shoulderMotor = new Talon(3);
+        rollerMotor = new Talon(4);
+    }
+   
+    public void spinRollerCommand(double polarity) {
+        rollerMotor.set(polarity*k_algaeRollerSpeed);
+       
+    }
+    public void spinShoulderCommand(double polarity) {
+        shoulderMotor.set(polarity*k_algaeArmRotationSpeed);
         
-        ShoulderMotor = new Talon(3);
-        RollerMotor = new Talon(4);
     }
-    public Command armRotationCommand(double shoulderspeed){
-        return run(() -> {
-            ShoulderMotor.set(shoulderspeed);
-        });
+    public void stopShoulder() {
+        shoulderMotor.set(0);
     }
-    public Command rollCommand(double rollerspeed){
-        return run(() -> {
-            RollerMotor.set(rollerspeed);
-        });
+    public void stopRoller() {
+        rollerMotor.set(0);
     }
 
     @Override

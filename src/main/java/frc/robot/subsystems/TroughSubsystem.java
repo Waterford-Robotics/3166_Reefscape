@@ -9,11 +9,11 @@ public class TroughSubsystem extends SubsystemBase
     private Talon troughMotor;
 
     public TroughSubsystem() {
-        troughMotor = new Talon(0);
+        troughMotor = new Talon(1);
     }
 
-    public void spinCommand() {
-        troughMotor.set(k_troughSpin); 
+    public void spinCommand(int polarity) {
+        troughMotor.set(polarity*k_troughSpin);
     }
 
     public void stop() {

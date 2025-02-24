@@ -13,8 +13,8 @@ public final class Constants {
 
     public static final class OperatorConstants {
         public static final int k_driverController = 0;
-        public static final double k_AlgaeArmRotationSpeed = 0.1; //all speed variables will have to be adjusted later
-        public static final double k_algaeRollerSpeed = 0.1;
+        public static final double k_algaeArmRotationSpeed = 0.2; //all speed variables will have to be adjusted later
+        public static final double k_algaeRollerSpeed = 0.5;
         public static final int k_algaeReleaseArmButton = Button.kY.value;
         public static final int k_algaePickupArmButton = Button.kA.value;
         public static final int k_algaePickupRollerPOV = 90; //this dpad POV 90degree
@@ -41,5 +41,6 @@ public final class Constants {
 
         public static final double spinUpAutoTime = 8; 
         public static final double shootAutoTime = 3; 
+        
   }
 }

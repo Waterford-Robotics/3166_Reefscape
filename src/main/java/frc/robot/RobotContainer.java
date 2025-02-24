@@ -42,32 +42,67 @@ public class RobotContainer {
         configureBindings();
 
        m_swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
-       m_algaeSubsystem.setDefaultCommand(algaeArmRotation);
     }
 
     private void configureBindings() {
         //Where you decide what each button does
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseArmButton).whileTrue(m_algaeSubsystem.armRotationCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
-        new JoystickButton(m_driverController.getHID(), OperatorConstants.k_algaePickupArmButton).whileTrue(m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
-        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaeReleaseRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(-1*OperatorConstants.k_AlgaeArmRotationSpeed));
-        new POVButton(m_driverController.getHID(), OperatorConstants.k_algaePickupRollerPOV).whileTrue(m_algaeSubsystem.rollCommand(OperatorConstants.k_AlgaeArmRotationSpeed));
 
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.troughYforward)
-        .whileTrue(new RunCommand(
-            () -> m_troughSubsystem.spinCommand(),
-            m_troughSubsystem))
-
-        .whileFalse(new RunCommand(
-            () -> m_troughSubsystem.stop(),
-            m_troughSubsystem));
+        //trough
+        new JoystickButton(m_driverController.getHID(), 6)
+            .whileTrue(new RunCommand(
+                () -> m_troughSubsystem.spinCommand(1),
+                m_troughSubsystem))
+            .onFalse(new RunCommand(
+                () -> m_troughSubsystem.stop(),
+                m_troughSubsystem));
+        
+        new JoystickButton(m_driverController.getHID(), 5)
+            .whileTrue(new RunCommand(
+                () -> m_troughSubsystem.spinCommand(-1),
+                m_troughSubsystem))
+            .onFalse(new RunCommand(
+                () -> m_troughSubsystem.stop(),
+                m_troughSubsystem));
+    
+            // Algae buttons for roller
+        new JoystickButton(m_driverController.getHID(), 1)
+            .whileTrue(new RunCommand(
+                () -> m_algaeSubsystem.spinRollerCommand(1),
+                m_algaeSubsystem))
+            .onFalse(new RunCommand(
+                () -> m_algaeSubsystem.stopRoller(),
+                m_algaeSubsystem));
+        
+        new JoystickButton(m_driverController.getHID(), 2)
+            .whileTrue(new RunCommand(
+                () -> m_algaeSubsystem.spinRollerCommand(-1),
+                m_algaeSubsystem))
+            .onFalse(new RunCommand(
+                () -> m_algaeSubsystem.stopRoller(),
+                m_algaeSubsystem));
+    
+        //Algae arm
+        new JoystickButton(m_driverController.getHID(), 3)
+            .whileTrue(new RunCommand(
+                () -> m_algaeSubsystem.spinShoulderCommand(0.4),
+                m_algaeSubsystem))
+            .onFalse(new RunCommand(
+                () -> m_algaeSubsystem.stopShoulder(),
+                m_algaeSubsystem));
+        
+        new JoystickButton(m_driverController.getHID(), 4)
+            .whileTrue(new RunCommand(
+                () -> m_algaeSubsystem.spinShoulderCommand(-1.5),
+                m_algaeSubsystem))
+            .onFalse(new RunCommand(
+                () -> m_algaeSubsystem.stopShoulder(),
+                m_algaeSubsystem));
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
         () -> MathUtil.applyDeadband(m_driverController.getLeftY() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> MathUtil.applyDeadband(m_driverController.getLeftX() * DriveConstants.k_driveSpeed, DriveConstants.k_driveDeadBand),
         () -> m_driverController.getRightX() * DriveConstants.k_turnRate); 
-    Command algaeArmRotation = m_algaeSubsystem.armRotationCommand(OperatorConstants.k_AlgaeArmRotationSpeed); 
-
     public Command getAutonomousCommand() {
 
         // The selected auto on SmartDashboard will be run in autonomous
