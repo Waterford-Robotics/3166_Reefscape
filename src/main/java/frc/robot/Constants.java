@@ -30,6 +30,8 @@ public final class Constants {
     }
 
     public static final class ControllerConstants {
+        public static final int troughYforward = 4;
+        public static final int resetNavX = 8; 
         public static final int k_algaeArmUpPOV1 = 315;
         public static final int k_algaeArmUpPOV2 = 0;  //All of these buttons are very close together and you may accidentally press one instead of the other so they all do the same thing
         public static final int k_algaeArmUpPOV3 = 45;
