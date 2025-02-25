@@ -97,6 +97,11 @@ public class RobotContainer {
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
+
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.resetNavX)
+            .onTrue(new RunCommand(
+                () -> m_swerveSubsystem.zeroGyro(), 
+                m_swerveSubsystem)); 
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(

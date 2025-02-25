@@ -29,6 +29,7 @@ public final class Constants {
 
     public static final class ControllerConstants {
         public static final int troughYforward = 4;
+        public static final int resetNavX = 8; 
     }
 
     public static final class TroughSpinConstants {
