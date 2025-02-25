@@ -2,18 +2,20 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import static frc.robot.Constants.TroughSpinConstants.k_troughSpin;
+import frc.robot.Constants.MotorChannelConstants;
+
+import static frc.robot.Constants.OperatorConstants.k_troughRollerSpeed;
 
 public class TroughSubsystem extends SubsystemBase
 {
     private Talon troughMotor;
 
     public TroughSubsystem() {
-        troughMotor = new Talon(1);
+        troughMotor = new Talon(MotorChannelConstants.troughMotorChannel);
     }
 
     public void spinCommand(int polarity) {
-        troughMotor.set(polarity*k_troughSpin);
+        troughMotor.set(polarity*k_troughRollerSpeed);
     }
 
     public void stop() {

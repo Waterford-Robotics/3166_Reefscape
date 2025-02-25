@@ -2,8 +2,10 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.MotorChannelConstants;
+
 import static frc.robot.Constants.OperatorConstants.k_algaeRollerSpeed;
-import static frc.robot.Constants.OperatorConstants.k_algaeArmRotationSpeed;
+import static frc.robot.Constants.OperatorConstants.k_algaeShoulderRotationSpeed;
 
 public class AlgaeSubsystem extends SubsystemBase {
 
@@ -12,8 +14,8 @@ public class AlgaeSubsystem extends SubsystemBase {
     private Talon rollerMotor;
 
     public AlgaeSubsystem() {
-        shoulderMotor = new Talon(3);
-        rollerMotor = new Talon(4);
+        shoulderMotor = new Talon(MotorChannelConstants.shoulderMotorChannel);
+        rollerMotor = new Talon(MotorChannelConstants.algaerollerMotorChannel);
     }
    
     public void spinRollerCommand(double polarity) {
@@ -21,7 +23,7 @@ public class AlgaeSubsystem extends SubsystemBase {
        
     }
     public void spinShoulderCommand(double polarity) {
-        shoulderMotor.set(polarity*k_algaeArmRotationSpeed);
+        shoulderMotor.set(polarity*k_algaeShoulderRotationSpeed);
         
     }
     public void stopShoulder() {
