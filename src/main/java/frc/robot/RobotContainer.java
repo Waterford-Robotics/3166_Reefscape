@@ -1,5 +1,7 @@
 package frc.robot;
 
+import com.pathplanner.lib.events.EventTrigger;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,18 +29,22 @@ public class RobotContainer {
     public RobotContainer() {
 
         //Autos
-        m_chooser.addOption("Test Auto", m_swerveSubsystem.getAutonomousCommand("Test Auto"));
+        m_chooser.addOption("autoo", m_swerveSubsystem.getAutonomousCommand("autoo"));
+        m_chooser.addOption("autoonemeter", m_swerveSubsystem.getAutonomousCommand("autoonemeter"));
+        m_chooser.addOption("autotroughscore", m_swerveSubsystem.getAutonomousCommand("autotroughscore"));
 
         SmartDashboard.putData("Automode", m_chooser);
 
-        // New EventTrigger("run intake").whileTrue(Commands.print("running intake"));
-        // ^ ex. for path planner event triggers
+        new EventTrigger("troughSpinCommand")
+            .whileTrue(new RunCommand(
+                () -> m_troughSubsystem.spinCommand(1),
+                 m_troughSubsystem));
+       
+                 // ^ ex. for path planner event triggers
 
         // new PointTowardsZoneTrigger("Speaker").whileTrue(Commands.print("aiming at speaker"));
-        // ^ ex. for path planner point towards zone triggers 
-
-
-
+        // ^ ex. for path planner point towards zone triggers
+        
         configureBindings();
 
        m_swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
