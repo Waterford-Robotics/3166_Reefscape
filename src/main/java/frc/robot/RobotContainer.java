@@ -31,7 +31,46 @@ public class RobotContainer {
         //Autos
         m_chooser.addOption("autoo", m_swerveSubsystem.getAutonomousCommand("autoo"));
         m_chooser.addOption("autoonemeter", m_swerveSubsystem.getAutonomousCommand("autoonemeter"));
-        m_chooser.addOption("autotroughscore", m_swerveSubsystem.getAutonomousCommand("autotroughscore"));
+
+        // Coral 1
+        // Red Left
+        m_chooser.addOption("RLC1T6W", m_swerveSubsystem.getAutonomousCommand("RLC1T6W"));
+        m_chooser.addOption("RLC1T6LD", m_swerveSubsystem.getAutonomousCommand("RLC1T6LD"));
+        m_chooser.addOption("RLC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RLC1T6LDW"));
+
+        m_chooser.addOption("RLC1T5W", m_swerveSubsystem.getAutonomousCommand("RLC1T5W"));
+        m_chooser.addOption("RLC1T5LD", m_swerveSubsystem.getAutonomousCommand("RLC1T5LD"));
+        m_chooser.addOption("RLC1T5LDW", m_swerveSubsystem.getAutonomousCommand("RLC1T5LDW"));
+
+        m_chooser.addOption("RLC1T4W", m_swerveSubsystem.getAutonomousCommand("RLC1T4W"));
+        m_chooser.addOption("RLC1T4LD", m_swerveSubsystem.getAutonomousCommand("RLC1T4LD"));
+        m_chooser.addOption("RLC1T4LDW", m_swerveSubsystem.getAutonomousCommand("RLC1T4LDW"));
+
+        //Red Middle
+        m_chooser.addOption("RMC1T6W", m_swerveSubsystem.getAutonomousCommand("RMC1T6W"));
+        m_chooser.addOption("RMC1T6LD", m_swerveSubsystem.getAutonomousCommand("RMC1T6LD"));
+        m_chooser.addOption("RMC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RMC1T6LDW"));
+
+        m_chooser.addOption("RMC1T5W", m_swerveSubsystem.getAutonomousCommand("RMC1T5W"));
+        m_chooser.addOption("RMC1T5LD", m_swerveSubsystem.getAutonomousCommand("RMC1T5LD"));
+        m_chooser.addOption("RMC1T5LDW", m_swerveSubsystem.getAutonomousCommand("RMC1T5LDW"));
+
+        m_chooser.addOption("RMC1T1W", m_swerveSubsystem.getAutonomousCommand("RMC1T1W"));
+        m_chooser.addOption("RMC1T1LD", m_swerveSubsystem.getAutonomousCommand("RMC1T1LD"));
+        m_chooser.addOption("RMC1T1LDW", m_swerveSubsystem.getAutonomousCommand("RMC1T1LDW"));        
+
+        //Red Right
+        m_chooser.addOption("RRC1T6W", m_swerveSubsystem.getAutonomousCommand("RRC1T6W"));
+        m_chooser.addOption("RRC1T6LD", m_swerveSubsystem.getAutonomousCommand("RRC1T6LD"));
+        m_chooser.addOption("RRC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RRC1T6LDW"));
+
+        m_chooser.addOption("RRC1T1W", m_swerveSubsystem.getAutonomousCommand("RRC1T1W"));
+        m_chooser.addOption("RRC1T1LD", m_swerveSubsystem.getAutonomousCommand("RRC1T1LD"));
+        m_chooser.addOption("RRC1T1LDW", m_swerveSubsystem.getAutonomousCommand("RRC1T1LDW"));
+
+        m_chooser.addOption("RRC1T2W", m_swerveSubsystem.getAutonomousCommand("RRC1T2W"));
+        m_chooser.addOption("RRC1T2LD", m_swerveSubsystem.getAutonomousCommand("RRC1T2LD"));
+        m_chooser.addOption("RRC1T2LDW", m_swerveSubsystem.getAutonomousCommand("RRC1T2LDW")); 
 
         SmartDashboard.putData("Automode", m_chooser);
 
