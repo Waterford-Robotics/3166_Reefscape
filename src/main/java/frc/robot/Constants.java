@@ -1,7 +1,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.config.PIDConstants;
-
+import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.math.util.Units;
 
 public final class Constants {
@@ -42,6 +42,8 @@ public final class Constants {
         public static final int k_algaeReleaseRollerButton = 2; // B button (right)
         public static final int k_troughRollerForwardButton = 6; //Right bumper
         public static final int k_troughRollerBackwardButton = 5; //Left bumper
+        public final static int k_righttrig = Axis.kRightTrigger.value; // Right Trig
+        public final static int k_lefttrig = Axis.kLeftTrigger.value; // Left Trig
     }
 
     public static final class AutoConstants {

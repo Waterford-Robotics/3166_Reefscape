@@ -6,10 +6,12 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OperatorConstants;
@@ -176,6 +178,10 @@ public class RobotContainer {
             .onTrue(new RunCommand(
                 () -> m_swerveSubsystem.zeroGyro(), 
                 m_swerveSubsystem)); 
+
+        // strafe left (left trigger)
+        // new Trigger(() -> 
+
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(
