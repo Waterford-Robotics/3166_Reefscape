@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "troughScore2Coral"
+            "pathName": "RMT5"
           }
         },
         {
@@ -19,7 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "TroughToLoader2"
+            "pathName": "RLMT5LD"
           }
         },
         {
@@ -31,19 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "LoadingtoTroughfor2"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "T4W"
+            "pathName": "RLLDW"
           }
         }
       ]

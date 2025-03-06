@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "troughScore2Coral"
+            "pathName": "RMT1"
           }
         },
         {
@@ -19,25 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "TroughToLoader2"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "LoadingtoTroughfor2"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
+            "pathName": "RRMT1W"
           }
         }
       ]

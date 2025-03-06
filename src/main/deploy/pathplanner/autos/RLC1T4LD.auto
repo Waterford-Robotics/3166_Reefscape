@@ -21,18 +21,6 @@
           "data": {
             "pathName": "RLT4LD"
           }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "RLLDW"
-          }
         }
       ]
     }
