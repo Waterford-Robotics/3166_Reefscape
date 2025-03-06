@@ -89,6 +89,18 @@ public class SwerveSubsystem extends SubsystemBase {
                 false);
         });
     }
+    //strafe
+    public Command robotOrientedDriveCommand(DoubleSupplier translationX) {
+        return run(() -> {
+           
+            swerveDrive.drive(SwerveMath.scaleTranslation(new Translation2d(
+                translationX.getAsDouble() * swerveDrive.getMaximumChassisVelocity(),
+                0.0), 0.8),
+                0,
+                true,
+                false);
+        });
+    }
 
     public void resetOdometry(Pose2d initialHolonomicPose) {
         swerveDrive.resetOdometry(initialHolonomicPose);

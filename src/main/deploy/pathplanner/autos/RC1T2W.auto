@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RMT1"
+            "pathName": "RT2"
           }
         },
         {
@@ -19,7 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RRMT1W"
+            "pathName": "RT2W"
           }
         }
       ]

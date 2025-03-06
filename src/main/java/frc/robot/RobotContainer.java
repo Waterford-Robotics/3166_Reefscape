@@ -34,43 +34,41 @@ public class RobotContainer {
 
         // Coral 1
         // Red Left
-        m_chooser.addOption("RLC1T6W", m_swerveSubsystem.getAutonomousCommand("RLC1T6W"));
-        m_chooser.addOption("RLC1T6LD", m_swerveSubsystem.getAutonomousCommand("RLC1T6LD"));
-        m_chooser.addOption("RLC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RLC1T6LDW"));
+        m_chooser.addOption("LC1T6W", m_swerveSubsystem.getAutonomousCommand("LC1T6W"));
+        m_chooser.addOption("LC1T6LD", m_swerveSubsystem.getAutonomousCommand("LC1T6LD"));
+        m_chooser.addOption("LC1T6LDW", m_swerveSubsystem.getAutonomousCommand("LC1T6LDW"));
 
-        m_chooser.addOption("RLC1T5W", m_swerveSubsystem.getAutonomousCommand("RLC1T5W"));
-        m_chooser.addOption("RLC1T5LD", m_swerveSubsystem.getAutonomousCommand("RLC1T5LD"));
-        m_chooser.addOption("RLC1T5LDW", m_swerveSubsystem.getAutonomousCommand("RLC1T5LDW"));
-
-        m_chooser.addOption("RLC1T4W", m_swerveSubsystem.getAutonomousCommand("RLC1T4W"));
-        m_chooser.addOption("RLC1T4LD", m_swerveSubsystem.getAutonomousCommand("RLC1T4LD"));
-        m_chooser.addOption("RLC1T4LDW", m_swerveSubsystem.getAutonomousCommand("RLC1T4LDW"));
-
+        m_chooser.addOption("LC1T5W", m_swerveSubsystem.getAutonomousCommand("LC1T5W"));
+        m_chooser.addOption("LC1T5LD", m_swerveSubsystem.getAutonomousCommand("LC1T5LD"));
+        m_chooser.addOption("LC1T5LDW", m_swerveSubsystem.getAutonomousCommand("LC1T5LDW"));
+       
+        m_chooser.addOption("LC1T4W", m_swerveSubsystem.getAutonomousCommand("LC1T4W"));
+        m_chooser.addOption("LC1T4LD", m_swerveSubsystem.getAutonomousCommand("LC1T4LD"));
+        m_chooser.addOption("LC1T4LDW", m_swerveSubsystem.getAutonomousCommand("LC1T4LDW"));
         //Red Middle
-        m_chooser.addOption("RMC1T6W", m_swerveSubsystem.getAutonomousCommand("RMC1T6W"));
-        m_chooser.addOption("RMC1T6LD", m_swerveSubsystem.getAutonomousCommand("RMC1T6LD"));
-        m_chooser.addOption("RMC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RMC1T6LDW"));
+        m_chooser.addOption("MC1T6W", m_swerveSubsystem.getAutonomousCommand("MC1T6W"));
+        m_chooser.addOption("MC1T6LD", m_swerveSubsystem.getAutonomousCommand("MC1T6LD"));
+        m_chooser.addOption("MC1T6LDW", m_swerveSubsystem.getAutonomousCommand("MC1T6LDW"));
 
-        m_chooser.addOption("RMC1T5W", m_swerveSubsystem.getAutonomousCommand("RMC1T5W"));
-        m_chooser.addOption("RMC1T5LD", m_swerveSubsystem.getAutonomousCommand("RMC1T5LD"));
-        m_chooser.addOption("RMC1T5LDW", m_swerveSubsystem.getAutonomousCommand("RMC1T5LDW"));
+        m_chooser.addOption("MC1T5W", m_swerveSubsystem.getAutonomousCommand("MC1T5W"));
+        m_chooser.addOption("MC1T5LD", m_swerveSubsystem.getAutonomousCommand("MC1T5LD"));
+        m_chooser.addOption("MC1T5LDW", m_swerveSubsystem.getAutonomousCommand("MC1T5LDW"));
 
-        m_chooser.addOption("RMC1T1W", m_swerveSubsystem.getAutonomousCommand("RMC1T1W"));
-        m_chooser.addOption("RMC1T1LD", m_swerveSubsystem.getAutonomousCommand("RMC1T1LD"));
-        m_chooser.addOption("RMC1T1LDW", m_swerveSubsystem.getAutonomousCommand("RMC1T1LDW"));        
-
+        m_chooser.addOption("MC1T1W", m_swerveSubsystem.getAutonomousCommand("MC1T1W"));
+        m_chooser.addOption("MC1T1LD", m_swerveSubsystem.getAutonomousCommand("MC1T1LD"));
+        m_chooser.addOption("MC1T1LDW", m_swerveSubsystem.getAutonomousCommand("MC1T1LDW"));        
         //Red Right
-        m_chooser.addOption("RRC1T6W", m_swerveSubsystem.getAutonomousCommand("RRC1T6W"));
-        m_chooser.addOption("RRC1T6LD", m_swerveSubsystem.getAutonomousCommand("RRC1T6LD"));
-        m_chooser.addOption("RRC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RRC1T6LDW"));
+        m_chooser.addOption("RC1T6W", m_swerveSubsystem.getAutonomousCommand("RC1T6W"));
+        m_chooser.addOption("RC1T6LD", m_swerveSubsystem.getAutonomousCommand("RC1T6LD"));
+        m_chooser.addOption("RC1T6LDW", m_swerveSubsystem.getAutonomousCommand("RC1T6LDW"));
 
-        m_chooser.addOption("RRC1T1W", m_swerveSubsystem.getAutonomousCommand("RRC1T1W"));
-        m_chooser.addOption("RRC1T1LD", m_swerveSubsystem.getAutonomousCommand("RRC1T1LD"));
-        m_chooser.addOption("RRC1T1LDW", m_swerveSubsystem.getAutonomousCommand("RRC1T1LDW"));
+        m_chooser.addOption("RC1T1W", m_swerveSubsystem.getAutonomousCommand("RC1T1W"));
+        m_chooser.addOption("RC1T1LD", m_swerveSubsystem.getAutonomousCommand("RC1T1LD"));
+        m_chooser.addOption("RC1T1LDW", m_swerveSubsystem.getAutonomousCommand("RC1T1LDW"));
 
-        m_chooser.addOption("RRC1T2W", m_swerveSubsystem.getAutonomousCommand("RRC1T2W"));
-        m_chooser.addOption("RRC1T2LD", m_swerveSubsystem.getAutonomousCommand("RRC1T2LD"));
-        m_chooser.addOption("RRC1T2LDW", m_swerveSubsystem.getAutonomousCommand("RRC1T2LDW")); 
+        m_chooser.addOption("RC1T2W", m_swerveSubsystem.getAutonomousCommand("RC1T2W"));
+        m_chooser.addOption("RC1T2LD", m_swerveSubsystem.getAutonomousCommand("RC1T2LD"));
+        m_chooser.addOption("RC1T2LDW", m_swerveSubsystem.getAutonomousCommand("RC1T2LDW")); 
 
         SmartDashboard.putData("Automode", m_chooser);
 

@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RLT5"
+            "pathName": "RT1"
           }
         },
         {
@@ -19,13 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RLMT5LD"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
+            "pathName": "RMT1W"
           }
         }
       ]

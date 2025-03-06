@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RRT2"
+            "pathName": "LT5"
           }
         },
         {
@@ -19,7 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RRT2LD"
+            "pathName": "LMT5LD"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RRLDW"
+            "pathName": "LLDW"
           }
         }
       ]
