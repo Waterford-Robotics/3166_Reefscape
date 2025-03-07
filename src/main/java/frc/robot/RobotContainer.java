@@ -159,6 +159,7 @@ public class RobotContainer {
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
+
         new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUpPOV2)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(-1.5),
@@ -166,6 +167,7 @@ public class RobotContainer {
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
+
         new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUpPOV3)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(-1.5),
@@ -179,8 +181,17 @@ public class RobotContainer {
                 () -> m_swerveSubsystem.zeroGyro(), 
                 m_swerveSubsystem)); 
 
-        // strafe left (left trigger)
-        // new Trigger(() -> 
+        // strafe right (right trigger)
+        new Trigger(() -> m_driverController.getRawAxis(ControllerConstants.k_righttrig) > 0.05)
+        .whileTrue(new RunCommand(
+            () -> m_swerveSubsystem.robotOrientedDriveCommand(() -> m_driverController.getRawAxis(ControllerConstants.k_righttrig)),
+            m_swerveSubsystem)); 
+        
+        //strafe left, left trigger
+         new Trigger(() -> m_driverController.getRawAxis(ControllerConstants.k_lefttrig) > 0.05)
+        .whileTrue(new RunCommand(
+            () -> m_swerveSubsystem.robotOrientedDriveCommand(() -> -1*m_driverController.getRawAxis(ControllerConstants.k_lefttrig)),
+            m_swerveSubsystem)); 
 
     }
 
