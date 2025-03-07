@@ -11,9 +11,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 2.0
+            "name": "troughSpinCommand"
           }
         },
         {
@@ -31,7 +31,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "LLDW"
+            "pathName": "LLDT5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "troughSpinCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LMT5W"
           }
         }
       ]

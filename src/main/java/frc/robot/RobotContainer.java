@@ -177,22 +177,21 @@ public class RobotContainer {
                 m_algaeSubsystem));
 
         new JoystickButton(m_driverController.getHID(), ControllerConstants.resetNavX)
-            .onTrue(new RunCommand(
-                () -> m_swerveSubsystem.zeroGyro(), 
-                m_swerveSubsystem)); 
+        .onTrue(new InstantCommand(
+            () -> m_swerveSubsystem.zeroGyro(),
+            m_swerveSubsystem));
 
         // strafe right (right trigger)
         new Trigger(() -> m_driverController.getRawAxis(ControllerConstants.k_righttrig) > 0.05)
         .whileTrue(new RunCommand(
             () -> m_swerveSubsystem.robotOrientedDriveCommand(() -> m_driverController.getRawAxis(ControllerConstants.k_righttrig)),
-            m_swerveSubsystem)); 
-        
+            m_swerveSubsystem));
+    
         //strafe left, left trigger
-         new Trigger(() -> m_driverController.getRawAxis(ControllerConstants.k_lefttrig) > 0.05)
+        new Trigger(() -> m_driverController.getRawAxis(ControllerConstants.k_lefttrig) > 0.05)
         .whileTrue(new RunCommand(
             () -> m_swerveSubsystem.robotOrientedDriveCommand(() -> -1*m_driverController.getRawAxis(ControllerConstants.k_lefttrig)),
             m_swerveSubsystem)); 
-
     }
 
     Command driveFieldOrientedAngularVelocity = m_swerveSubsystem.driveCommand(

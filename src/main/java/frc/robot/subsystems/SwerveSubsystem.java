@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.SwerveConstants;
 import swervelib.SwerveDrive;
 import swervelib.math.SwerveMath;
@@ -36,7 +37,7 @@ public class SwerveSubsystem extends SubsystemBase {
     }
 
     public SwerveSubsystem() {
-        SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
+        SwerveDriveTelemetry.verbosity = TelemetryVerbosity.NONE;
 
         try {
             swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.k_maxSpeed);
@@ -74,7 +75,7 @@ public class SwerveSubsystem extends SubsystemBase {
                 }
                 return false;
             },
-            this 
+            this
         );
     }
 
@@ -83,23 +84,21 @@ public class SwerveSubsystem extends SubsystemBase {
            
             swerveDrive.drive(SwerveMath.scaleTranslation(new Translation2d(
                 translationX.getAsDouble() * swerveDrive.getMaximumChassisVelocity(),
-                translationY.getAsDouble() * swerveDrive.getMaximumChassisVelocity()), 0.8),
+                translationY.getAsDouble() * swerveDrive.getMaximumChassisVelocity()), DriveConstants.k_driveMaxSpeed),
                 Math.pow(angularRotationX.getAsDouble(), 3) * swerveDrive.getMaximumChassisAngularVelocity(),
                 true,
                 false);
         });
     }
     //strafe
-    public Command robotOrientedDriveCommand(DoubleSupplier translationX) {
-        return run(() -> {
+    public void robotOrientedDriveCommand(DoubleSupplier translationX) {
            
             swerveDrive.drive(SwerveMath.scaleTranslation(new Translation2d(
                 translationX.getAsDouble() * swerveDrive.getMaximumChassisVelocity(),
-                0.0), 0.8),
+                0.0), DriveConstants.k_strafeMaxSpeed),
                 0,
-                true,
+                false,
                 false);
-        });
     }
 
     public void resetOdometry(Pose2d initialHolonomicPose) {

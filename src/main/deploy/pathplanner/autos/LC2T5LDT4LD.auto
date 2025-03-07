@@ -7,7 +7,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "MT6"
+            "pathName": "LT5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "troughSpinCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LMT5LD"
           }
         },
         {
@@ -19,19 +31,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "LMT6LD"
+            "pathName": "LLDT4"
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 2.0
+            "name": "troughSpinCommand"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "LLDW"
+            "pathName": "LT4LD"
           }
         }
       ]
