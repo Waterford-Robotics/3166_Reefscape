@@ -28,7 +28,7 @@ public final class Constants {
         public static final double k_driveSpeed = -1;
         public static final double k_turnRate = -1;
         public static final double k_driveMaxSpeed = 0.6;
-        public static final double k_strafeMaxSpeed = 0.1;
+        public static final double k_strafeMaxSpeed = 0.2;
     }
 
     public static final class ControllerConstants {
