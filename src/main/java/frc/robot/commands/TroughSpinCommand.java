@@ -4,12 +4,12 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.TroughSubsystem;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 
 // Raises Elevator
-public class troughSpinCommand extends Command {
+public class TroughSpinCommand extends Command {
 
   // Uses Elevator and Subsystems
   TroughSubsystem m_troughSubsystem;
@@ -17,7 +17,7 @@ public class troughSpinCommand extends Command {
   Timer m_timer = new Timer();
 
   // Constructor
-  public TroughSpinCommand(TroughSubsystem troughSubsystem, double seconds) {
+  public void TroughSpinCommand(TroughSubsystem troughSubsystem, double seconds) {
         
     // Definitions and setting parameters are equal to members!
     m_troughSubsystem = troughSubsystem;
@@ -26,8 +26,6 @@ public class troughSpinCommand extends Command {
     // Level
     m_seconds = seconds;
 
-    // Position Status
-    m_notPositioned = !positioned;
   }
 
   // Reset timer when the command starts executing
@@ -40,19 +38,19 @@ public class troughSpinCommand extends Command {
   public void execute() {
 
     if(m_timer.get() < m_seconds) {
-      m_troughSubsystem.spinCommand();
+      m_troughSubsystem.spinCommand(1);
     }
   }
 
   // Stuff that happens when command is over
   public void end(boolean interrupted) {
-    m_intakeSubsystem.stopShooter();
+    m_troughSubsystem.stop();
   }
 
   // Checks if the command is done
   public boolean isFinished() {
 
     // Am I done?  Am I done? Am I finally done?
-    return m_notPositioned || m_timer.get() > m_seconds;
+    return m_timer.get() > m_seconds;
   }
 }

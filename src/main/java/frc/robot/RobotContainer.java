@@ -1,5 +1,6 @@
 package frc.robot;
 
+import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.events.EventTrigger;
 
 import edu.wpi.first.math.MathUtil;
@@ -74,6 +75,11 @@ public class RobotContainer {
 
         SmartDashboard.putData("Automode", m_chooser);
 
+       //Named Comands
+       
+        NamedCommands.registerCommand("trough spin command", new InstantCommand(() -> m_troughSubsystem.spinCommand(1), m_troughSubsystem));
+
+      //Event trigger ig
         new EventTrigger("troughSpinCommand")
             .whileTrue(new RunCommand(
                 () -> m_troughSubsystem.spinCommand(1),
