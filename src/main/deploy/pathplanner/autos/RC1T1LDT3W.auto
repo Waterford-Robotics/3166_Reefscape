@@ -7,19 +7,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RT2"
+            "pathName": "RT1"
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 2.0
+            "name": "troughSpinCommand"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "T2LD"
+            "pathName": "RMT1LD"
           }
         }
       ]

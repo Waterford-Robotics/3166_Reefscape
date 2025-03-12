@@ -33,6 +33,12 @@
           "data": {
             "pathName": "LDT2"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "troughSpinCommand"
+          }
         }
       ]
     }

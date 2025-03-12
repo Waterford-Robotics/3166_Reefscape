@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -16,13 +17,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.TroughSpinCommand;
 import frc.robot.subsystems.AlgaeSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.TroughSubsystem;
 
 public class RobotContainer {
 
-    private final SwerveSubsystem m_swerveSubsystem = new SwerveSubsystem();
+    public final SwerveSubsystem m_swerveSubsystem = new SwerveSubsystem();
     private final AlgaeSubsystem m_algaeSubsystem = new AlgaeSubsystem();
     private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.k_driverController);
     private final TroughSubsystem m_troughSubsystem = new TroughSubsystem();
@@ -78,6 +80,10 @@ public class RobotContainer {
        //Named Comands
        
         NamedCommands.registerCommand("trough spin command", new InstantCommand(() -> m_troughSubsystem.spinCommand(1), m_troughSubsystem));
+        NamedCommands.registerCommand("trough spin command", new TroughSpinCommand(m_troughSubsystem, 0.3));
+        NamedCommands.registerCommand("trough Spin Command",troughSpinCommand );
+
+
 
       //Event trigger ig
         new EventTrigger("troughSpinCommand")
@@ -209,4 +215,9 @@ public class RobotContainer {
         // The selected auto on SmartDashboard will be run in autonomous
         return m_chooser.getSelected(); 
       }
+
+    SequentialCommandGroup troughSpinCommand = new SequentialCommandGroup(
+        new TroughSpinCommand(m_troughSubsystem, 0.3)
+    );
+    
 }

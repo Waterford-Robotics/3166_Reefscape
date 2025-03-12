@@ -17,7 +17,7 @@ public class TroughSpinCommand extends Command {
   Timer m_timer = new Timer();
 
   // Constructor
-  public void TroughSpinCommand(TroughSubsystem troughSubsystem, double seconds) {
+  public TroughSpinCommand(TroughSubsystem troughSubsystem, double seconds) {
         
     // Definitions and setting parameters are equal to members!
     m_troughSubsystem = troughSubsystem;
