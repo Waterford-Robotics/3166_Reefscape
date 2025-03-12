@@ -79,10 +79,9 @@ public class RobotContainer {
 
        //Named Comands
        
-        NamedCommands.registerCommand("trough spin command", new InstantCommand(() -> m_troughSubsystem.spinCommand(1), m_troughSubsystem));
-        NamedCommands.registerCommand("trough spin command", new TroughSpinCommand(m_troughSubsystem, 0.3));
-        NamedCommands.registerCommand("trough Spin Command",troughSpinCommand );
-
+       // NamedCommands.registerCommand("trough spin command", new InstantCommand(() -> m_troughSubsystem.spinCommand(1), m_troughSubsystem));
+        NamedCommands.registerCommand("troughSpinCommand", new TroughSpinCommand(m_troughSubsystem, 0.3));
+        //NamedCommands.registerCommand("trough spin command",troughSpinCommand );
 
 
       //Event trigger ig
@@ -216,8 +215,8 @@ public class RobotContainer {
         return m_chooser.getSelected(); 
       }
 
-    SequentialCommandGroup troughSpinCommand = new SequentialCommandGroup(
-        new TroughSpinCommand(m_troughSubsystem, 0.3)
-    );
+    // SequentialCommandGroup troughSpinCommand = new SequentialCommandGroup(
+    //     new TroughSpinCommand(m_troughSubsystem, 0.3)
+    // );
     
 }
