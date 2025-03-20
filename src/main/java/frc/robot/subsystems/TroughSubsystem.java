@@ -14,7 +14,7 @@ public class TroughSubsystem extends SubsystemBase
         troughMotor = new Talon(MotorChannelConstants.troughMotorChannel);
     }
 
-    public void spinCommand(int polarity) {
+    public void spinCommand(double polarity) {
         troughMotor.set(polarity*k_troughRollerSpeed);
     }
 

@@ -1,0 +1,79 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RT1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "troughSpinCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "T1LD"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LDT2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "troughSpinCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "T2LD"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LDT3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "troughSpinCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "T3FW"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

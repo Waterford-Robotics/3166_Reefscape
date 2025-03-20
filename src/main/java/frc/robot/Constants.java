@@ -19,16 +19,16 @@ public final class Constants {
     public static final class OperatorConstants {
         public static final int k_driverController = 0;
         public static final double k_algaeShoulderRotationSpeed = 0.2; //all speed variables will have to be adjusted later
-        public static final double k_algaeRollerSpeed = 0.5;
-        public static final double k_troughRollerSpeed = -0.8;
+        public static final double k_algaeRollerSpeed = 0.55;
+        public static final double k_troughRollerSpeed = -0.49;
     }
 
     public static final class DriveConstants {
         public static final double k_driveDeadBand = 0.1;
         public static final double k_driveSpeed = -1;
         public static final double k_turnRate = -1;
-        public static final double k_driveMaxSpeed = 0.6;
-        public static final double k_strafeMaxSpeed = 0.2;
+        public static final double k_driveMaxSpeed = 0.70;
+        public static final double k_strafeMaxSpeed = 0.50;
     }
 
     public static final class ControllerConstants {
