@@ -33,10 +33,9 @@ public class RobotContainer {
     public RobotContainer() {
   //Named Commands
   
-        // NamedCommands.registerCommand("trough spin command", new InstantCommand(() -> m_troughSubsystem.spinCommand(1), m_troughSubsystem));
+        
         NamedCommands.registerCommand("troughSpinCommand", new TroughSpinCommand(m_troughSubsystem,1));
-        //NamedCommands.registerCommand("trough spin command",troughSpinCommand );
-
+        
         //Autos
         // m_chooser.addOption("autoo", m_swerveSubsystem.getAutonomousCommand("autoo"));
         // m_chooser.addOption("autoonemeter", m_swerveSubsystem.getAutonomousCommand("autoonemeter"));
@@ -50,7 +49,7 @@ public class RobotContainer {
         // m_chooser.addOption("LC1T5LD", m_swerveSubsystem.getAutonomousCommand("LC1T5LD"));
         // m_chooser.addOption("LC1T5LDW", m_swerveSubsystem.getAutonomousCommand("LC1T5LDW"));
        
-        // m_chooser.addOption("LC1T4W", m_swerveSubsystem.getAutonomousCommand("LC1T4W"));
+        //m_chooser.addOption("LC1T4W", m_swerveSubsystem.getAutonomousCommand("LC1T4W"));
         // m_chooser.addOption("LC1T4LD", m_swerveSubsystem.getAutonomousCommand("LC1T4LD"));
         // m_chooser.addOption("LC1T4LDW", m_swerveSubsystem.getAutonomousCommand("LC1T4LDW"));
         // m_chooser.addOption("LC2T5LDT4", m_swerveSubsystem.getAutonomousCommand("LC2T5LDT4"));
