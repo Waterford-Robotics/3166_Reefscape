@@ -194,6 +194,8 @@ public class RobotContainer {
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
 
+                //Algae shoulder buttons
+
         new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUpPOV3)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(-1.5),
@@ -202,6 +204,7 @@ public class RobotContainer {
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
 
+                //resets navX
         new JoystickButton(m_driverController.getHID(), ControllerConstants.resetNavX)
         .onTrue(new InstantCommand(
             () -> m_swerveSubsystem.zeroGyro(),
