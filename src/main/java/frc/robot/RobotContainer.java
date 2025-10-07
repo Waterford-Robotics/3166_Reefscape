@@ -136,15 +136,9 @@ public class RobotContainer {
                 m_troughSubsystem));
     
             //Algae buttons for roller
-        new JoystickButton(m_driverController.getHID(),ControllerConstants.k_algaePickupRollerButton) //Run roller inward, pick up algae off floor
-            .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinRollerCommand(1),
-                m_algaeSubsystem))
-            .onFalse(new RunCommand(
-                () -> m_algaeSubsystem.stopRoller(),
-                m_algaeSubsystem));
+
         
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeReleaseRollerButton) //Push algae out of roller
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeDisplaceButton) //knock algae out of reef; 
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinRollerCommand(-1),
                 m_algaeSubsystem))
@@ -155,30 +149,17 @@ public class RobotContainer {
         //Algae arm ---- 3 Buttons on the DPad per command
 
         //Algae arm down
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDownPOV1)
+        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDown)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(0.4), //Set to 0.4 instead of 1 so the motor will run slower.
                 m_algaeSubsystem))
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDownPOV2)
-            .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinShoulderCommand(0.4),
-                m_algaeSubsystem))
-            .onFalse(new RunCommand(
-                () -> m_algaeSubsystem.stopShoulder(),
-                m_algaeSubsystem));
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDownPOV3)
-            .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinShoulderCommand(0.4),
-                m_algaeSubsystem))
-            .onFalse(new RunCommand(
-                () -> m_algaeSubsystem.stopShoulder(),
-                m_algaeSubsystem));
+
 
                 //Algae arm up
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUpPOV1)
+        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUp)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(-1.5), //Set to -1.5 instead of -1 so the motor will run faster, fighting gravity
                 m_algaeSubsystem))
@@ -186,23 +167,6 @@ public class RobotContainer {
                 () -> m_algaeSubsystem.stopShoulder(),
                 m_algaeSubsystem));
 
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUpPOV2)
-            .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinShoulderCommand(-1.5),
-                m_algaeSubsystem))
-            .onFalse(new RunCommand(
-                () -> m_algaeSubsystem.stopShoulder(),
-                m_algaeSubsystem));
-
-                //Algae shoulder buttons
-
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUpPOV3)
-            .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinShoulderCommand(-1.5),
-                m_algaeSubsystem))
-            .onFalse(new RunCommand(
-                () -> m_algaeSubsystem.stopShoulder(),
-                m_algaeSubsystem));
 
                 //resets navX
         new JoystickButton(m_driverController.getHID(), ControllerConstants.resetNavX)

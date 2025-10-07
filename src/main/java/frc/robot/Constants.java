@@ -32,16 +32,11 @@ public final class Constants {
     }
 
     public static final class ControllerConstants {
-        public static final int troughYforward = 4;
+        
         public static final int resetNavX = 8; 
-        public static final int k_algaeArmUpPOV1 = 315;
-        public static final int k_algaeArmUpPOV2 = 0;  //All of these buttons are very close together and you may accidentally press one instead of the other so they all do the same thing
-        public static final int k_algaeArmUpPOV3 = 45;
-        public static final int k_algaeArmDownPOV1 = 135;
-        public static final int k_algaeArmDownPOV2 = 180;  //Same with these 3
-        public static final int k_algaeArmDownPOV3 = 225;
-        public static final int k_algaePickupRollerButton = 3; // X button (left)
-        public static final int k_algaeReleaseRollerButton = 2; // B button (right)
+        public static final int k_algaeArmUp = 4;  //Y button
+        public static final int k_algaeArmDown = 1; //A button
+        public static final int k_algaeDisplaceButton = 2; // B button (right)
         public static final int k_troughRollerForwardButton = 6; //Right bumper
         public static final int k_troughRollerBackwardButton = 5; //Left bumper
         public final static int k_righttrig = Axis.kRightTrigger.value; // Right Trig
