@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.TroughSpinCommand;
+import frc.robot.commands.AlgaeRollerCommand;
 import frc.robot.subsystems.AlgaeSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.TroughSubsystem;
@@ -35,6 +35,7 @@ public class RobotContainer {
   
         
         NamedCommands.registerCommand("troughSpinCommand", new TroughSpinCommand(m_troughSubsystem,1));
+        NamedCommands.registerCommand("algaeRollerCommand", new AlgaeRollerCommand(m_algaeSubsystem,2));
         
         //Autos
         // m_chooser.addOption("autoo", m_swerveSubsystem.getAutonomousCommand("autoo"));
@@ -55,7 +56,7 @@ public class RobotContainer {
         // m_chooser.addOption("LC2T5LDT4", m_swerveSubsystem.getAutonomousCommand("LC2T5LDT4"));
         // m_chooser.addOption("LC2T5LDT4LD", m_swerveSubsystem.getAutonomousCommand("LC2T5LDT4LD"));
         // m_chooser.addOption("LC2T5LDT4LDW", m_swerveSubsystem.getAutonomousCommand("LCT5LDT4LDW"));
-        // m_chooser.addOption("LC2T5LDT4W", m_swerveSubsystem.getAutonomousCommand("LC2T5LDT4W"));
+         m_chooser.addOption("LC2T5LDT4W", m_swerveSubsystem.getAutonomousCommand("LC2T5LDT4W"));
 
         // //Red Middle
         // m_chooser.addOption("MC1T6W", m_swerveSubsystem.getAutonomousCommand("MC1T6W"));
@@ -86,7 +87,7 @@ public class RobotContainer {
         // m_chooser.addOption("RC1T2W", m_swerveSubsystem.getAutonomousCommand("RC1T2W"));
         // m_chooser.addOption("RC1T2LD", m_swerveSubsystem.getAutonomousCommand("RC1T2LD"));
         // m_chooser.addOption("RC1T2LDW", m_swerveSubsystem.getAutonomousCommand("RC1T2LDW")); 
-        // m_chooser.addOption("RC2T1LDT2W", m_swerveSubsystem.getAutonomousCommand("RC2T1LDT2W")); 
+        m_chooser.addOption("RC2T1LDT2W", m_swerveSubsystem.getAutonomousCommand("RC2T1LDT2W")); 
         // m_chooser.addOption("RC2T2LDT3W", m_swerveSubsystem.getAutonomousCommand("RC2T2LDT3W")); 
         // m_chooser.addOption("RC3T1LDT2LDT3FW", m_swerveSubsystem.getAutonomousCommand("RC3T1LDT2LDT3FW")); 
 //ONLY CHOOSER
@@ -149,9 +150,9 @@ public class RobotContainer {
         //Algae arm ---- 3 Buttons on the DPad per command
 
         //Algae arm down
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDown)
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDown)
             .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinShoulderCommand(0.4), //Set to 0.4 instead of 1 so the motor will run slower.
+                () -> m_algaeSubsystem.spinShoulderCommand(-0.8), //Set to 0.4 instead of 1 so the motor will run slower.
                 m_algaeSubsystem))
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopShoulder(),
@@ -159,9 +160,9 @@ public class RobotContainer {
 
 
                 //Algae arm up
-        new POVButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUp)
+        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUp)
             .whileTrue(new RunCommand(
-                () -> m_algaeSubsystem.spinShoulderCommand(-1.5), //Set to -1.5 instead of -1 so the motor will run faster, fighting gravity
+                () -> m_algaeSubsystem.spinShoulderCommand(1.5), //Set to -1.5 instead of -1 so the motor will run faster, fighting gravity
                 m_algaeSubsystem))
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopShoulder(),

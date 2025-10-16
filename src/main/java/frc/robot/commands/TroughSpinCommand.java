@@ -23,7 +23,7 @@ public class TroughSpinCommand extends Command {
     m_troughSubsystem = troughSubsystem;
     addRequirements(troughSubsystem);
 
-    // Level
+    
     m_seconds = seconds;
 
   }
