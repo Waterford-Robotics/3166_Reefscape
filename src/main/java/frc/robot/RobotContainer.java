@@ -26,6 +26,7 @@ public class RobotContainer {
     public final SwerveSubsystem m_swerveSubsystem = new SwerveSubsystem();
     private final AlgaeSubsystem m_algaeSubsystem = new AlgaeSubsystem();
     private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.k_driverController);
+    private final CommandXboxController m_operatorController = new CommandXboxController(OperatorConstants.k_operatorController);
     private final TroughSubsystem m_troughSubsystem = new TroughSubsystem();
 
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -119,38 +120,35 @@ public class RobotContainer {
     private void configureBindings() {
         //Where you decide what each button does
 
-        //trough 
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_troughRollerForwardButton) //Push coral forward into trough
+        //trough
+        new Trigger(() -> m_operatorController.getRawAxis(ControllerConstants.k_righttrig) > 0.05)
             .whileTrue(new RunCommand(
                 () -> m_troughSubsystem.spinCommand(1),
                 m_troughSubsystem))
             .onFalse(new RunCommand(
                 () -> m_troughSubsystem.stop(),
                 m_troughSubsystem));
-        
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_troughRollerBackwardButton) //Push coral backward into robot (can help if one is stuck)
+        new Trigger(() -> m_operatorController.getRawAxis(ControllerConstants.k_lefttrig) > 0.05)
             .whileTrue(new RunCommand(
                 () -> m_troughSubsystem.spinCommand(-1),
                 m_troughSubsystem))
             .onFalse(new RunCommand(
-                () -> m_troughSubsystem.stop(),
-                m_troughSubsystem));
-    
+            () -> m_troughSubsystem.stop(),
+            m_troughSubsystem));
+
             //Algae buttons for roller
 
         
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeDisplaceButton) //knock algae out of reef; 
+        new JoystickButton(m_operatorController.getHID(), ControllerConstants.k_algaeDisplaceButton) //knock algae out of reef; 
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinRollerCommand(-1),
                 m_algaeSubsystem))
             .onFalse(new RunCommand(
                 () -> m_algaeSubsystem.stopRoller(),
                 m_algaeSubsystem));
-    
-        //Algae arm ---- 3 Buttons on the DPad per command
 
         //Algae arm down
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeArmDown)
+        new JoystickButton(m_operatorController.getHID(), ControllerConstants.k_algaeArmDown)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(-0.8), //Set to 0.4 instead of 1 so the motor will run slower.
                 m_algaeSubsystem))
@@ -160,7 +158,7 @@ public class RobotContainer {
 
 
                 //Algae arm up
-        new JoystickButton(m_driverController.getHID(), ControllerConstants.k_algaeArmUp)
+        new JoystickButton(m_operatorController.getHID(), ControllerConstants.k_algaeArmUp)
             .whileTrue(new RunCommand(
                 () -> m_algaeSubsystem.spinShoulderCommand(1.5), //Set to -1.5 instead of -1 so the motor will run faster, fighting gravity
                 m_algaeSubsystem))
